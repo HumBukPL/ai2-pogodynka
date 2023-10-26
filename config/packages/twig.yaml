@@ -1,5 +1,8 @@
+# twig.yaml
 twig:
     default_path: '%kernel.project_dir%/templates'
+    form_themes:
+        - 'bootstrap_5_layout.html.twig' # Dodajemy Bootstrap 5 form theme
 
 when@test:
     twig:

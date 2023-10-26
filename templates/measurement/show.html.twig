@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Measurement{% endblock %}
+
+{% block body %}
+    <h1>Measurement</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ measurement.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ measurement.date }}</td>
+            </tr>
+            <tr>
+                <th>Temperature</th>
+                <td>{{ measurement.temperature }}</td>
+            </tr>
+            <tr>
+                <th>Humidity</th>
+                <td>{{ measurement.humidity }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_measurement_index') }}">back to list</a>
+
+    <a href="{{ path('app_measurement_edit', {'id': measurement.id}) }}">edit</a>
+
+    {{ include('measurement/_delete_form.html.twig') }}
+{% endblock %}
