@@ -12,7 +12,7 @@
                 <th>City</th>
                 <th>Country</th>
                 <th>Latitude</th>
-                <th>Longitude</th>
+                <th>Langitude</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -25,8 +25,14 @@
                 <td>{{ location.latitude }}</td>
                 <td>{{ location.longitude }}</td>
                 <td>
-                    <a href="{{ path('app_location_show', {'id': location.id}) }}">show</a>
-                    <a href="{{ path('app_location_edit', {'id': location.id}) }}">edit</a>
+                    {% if is_granted('ROLE_LOCATION_SHOW') %}
+                        <a href="{{ path('app_location_show', {'id': location.id}) }}">show</a>
+                    {% endif %}
+                    {% if is_granted('ROLE_LOCATION_EDIT') %}
+                        <a href="{{ path('app_location_edit', {'id': location.id}) }}">edit</a>
+                    {% endif %}
+
+                    <a href="{{ path('app_weather', {'country': location.country, 'city': location.city}) }}">weather</a>
                 </td>
             </tr>
         {% else %}
@@ -34,11 +40,10 @@
                 <td colspan="6">no records found</td>
             </tr>
         {% endfor %}
-
-
         </tbody>
     </table>
 <a href="{{ path('app_measurement_index')}}">Go to measurements    </a>
-
-    <a href="{{ path('app_location_new') }}">Create new</a>
+    {% if is_granted('ROLE_LOCATION_NEW') %}
+        <a href="{{ path('app_location_new') }}">Create new</a>
+    {% endif %}
 {% endblock %}
