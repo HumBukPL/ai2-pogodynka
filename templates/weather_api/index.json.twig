@@ -1,0 +1,13 @@
+{
+    "city": "{{ city }}",
+    "country": "{{ country }}",
+    "measurements": [
+        {% for measurement in measurements %}
+            {
+                "date": "{{ measurement.date }}",
+                "temperature": "{{ measurement.temperature }}",
+                "humidity": "{{ measurement.humidity }}"
+            }{% if not loop.last %},{% endif %}
+        {% endfor %}
+    ]
+}

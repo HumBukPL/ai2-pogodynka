@@ -1,0 +1,4 @@
+city,country,date,temperature,humidity
+{% for measurement in measurements %}
+{{ city }},{{ country }},{{ measurement.date}},{{ measurement.temperature }},{{ measurement.humidity }}
+{% endfor %}

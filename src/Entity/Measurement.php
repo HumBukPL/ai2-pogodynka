@@ -79,4 +79,8 @@ class Measurement
 
         return $this;
     }
+    public function getFahrenheit(): ?string
+    {
+        return  (string)round($this->temperature * 1.8 + 32, 2);
+    }
 }
